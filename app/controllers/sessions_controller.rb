@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+
   def new
     @user = User.new
   end
@@ -8,7 +9,7 @@ class SessionsController < ApplicationController
     puts '$' * 60
     if user && user.authenticate(params[:password])
       puts 'SESSIONTRUE' * 10
-      session[:user_id] = user.id
+      log_in(user)
     else
       puts 'SESSIONFALSE' * 10
       flash.now[:danger] = 'Invalid user/pass combo !'
@@ -19,4 +20,5 @@ class SessionsController < ApplicationController
   def destroy
     session.delete(:user_id)
   end
+
 end
