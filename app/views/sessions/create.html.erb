@@ -1,2 +1,5 @@
 <h1>Sessions#create</h1>
-<p>Find me in app/views/sessions/create.html.erb</p>
+
+<h2>Bienvenue <%= User.find_by(id: session[:user_id]).email %> !</h2>
+
+<%= link_to "Se déconnecter", session_path(session.id), method: :delete %>
